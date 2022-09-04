@@ -1,6 +1,5 @@
 <script lang="ts">
   import { user } from './stores.ts';
-
   const connect = async () => {
     const { ethereum } = window;
 
