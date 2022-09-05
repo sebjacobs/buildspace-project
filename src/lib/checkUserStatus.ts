@@ -10,6 +10,8 @@ export default async () => {
 
   const accounts = await ethereum.request({ method: 'eth_accounts' });
 
+  console.log(accounts);
+
   if (accounts[0]) {
     user.update(() => accounts[0]);
   }

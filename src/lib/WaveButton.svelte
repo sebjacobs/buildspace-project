@@ -1,6 +1,9 @@
 <script lang="ts">
   import { ethers } from 'ethers';
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
 
+  export let waveText;
   export let contractAddress;
   export let contractABI;
 
@@ -22,7 +25,7 @@
 
     console.log("Number of waves: ", wavesCount.toNumber());
 
-    const transaction = await contract.wave();
+    const transaction = await contract.wave(waveText);
 
     console.log("Mining...", transaction.hash);
 
@@ -33,6 +36,8 @@
     wavesCount = await contract.getTotalWaves();
 
     console.log("Number of waves: ", wavesCount.toNumber());
+
+    dispatch('wavePosted', { message: waveText });
   }
 
 </script>
